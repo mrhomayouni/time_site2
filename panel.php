@@ -1,19 +1,21 @@
 <?php
 require "_load.php";
 auth_reqire();
+global $user;
+var_dump($user);
 $projects = get_projects();
-if (isset($_POST["sub_project"])) {
-    $products = get_products($_POST["projects"]);
+if (isset($_GET["sub_project"])) {
+    $products = get_products($_GET["projects"]);
 }
-
-
-
-
-
 ?>
 
+<div>  علی محمدی </div>
 
-<form action="" method="post">
+<button type="button" onclick="location.href='exit.php';">
+    خروج
+</button>
+
+<form action="" method="get">
     <select name="projects">
         <?php foreach ($projects as $project) { ?>
             <option value="<?= $project["id"] ?>"><?= $project["name"] ?> </option>
@@ -31,7 +33,7 @@ if (isset($_POST["sub_project"])) {
             <?php } ?>
         </select>
 <!--        <input type="hidden" name="product" value="<?/*=$product*/?>">
--->        <input type="submit" name="sub_project" value="send">
+-->        <input type="submit" name="sub_product" value="send">
     </form>
 <?php } ?>
 
